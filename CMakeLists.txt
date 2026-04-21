@@ -12,6 +12,19 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # ==================================================
+# FetchContent Setup
+# ==================================================
+include(FetchContent)
+
+FetchContent_Declare(
+    SteamworksSDK
+    GIT_REPOSITORY https://github.com/Waffle0823/SteamworksSDK.git
+    GIT_TAG main
+)
+
+FetchContent_MakeAvailable(SteamworksSDK)
+
+# ==================================================
 # Source & Header Collection
 # ==================================================
 file(GLOB_RECURSE SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
@@ -29,7 +42,12 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/include)
 # ==================================================
 find_package(raylib CONFIG REQUIRED)
 find_package(glfw3 CONFIG REQUIRED)
-target_link_libraries(${PROJECT_NAME} PRIVATE raylib glfw)
+target_link_libraries(${PROJECT_NAME} PRIVATE 
+    raylib 
+    glfw
+    Steamworks::API
+    Steamworks::EncryptedAppTicket
+)
 
 # ==================================================
 # Output / Tools
