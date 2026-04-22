@@ -14,6 +14,7 @@ private:
   Color color;
 
   Vector2 absolute_position;
+  Vector2 absolute_size;
   float absolute_font_size;
 
 public:

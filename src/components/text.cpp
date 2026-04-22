@@ -13,14 +13,14 @@ void TextComponent::Update() {
 
   absolute_font_size = screen_height * font_size.scale + font_size.offset;
 
-  Vector2 text_size =
+  absolute_size =
       MeasureTextEx(font, text.c_str(), absolute_font_size, spacing);
 
   absolute_position = Vector2{
       screen_width * position.relative_x + position.absolute_x -
-          text_size.x / 2.0f,
+          absolute_size.x / 2.0f,
       screen_height * position.relative_y + position.absolute_y -
-          text_size.y / 2.0f,
+          absolute_size.y / 2.0f,
   };
 }
 
