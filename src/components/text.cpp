@@ -1,12 +1,6 @@
 #include "components/text.hpp"
 #include <raylib.h>
 
-TextComponent::TextComponent(const std::string &text, const UDim2 &position,
-                             const Font &font, const UDim &font_size,
-                             float spacing, const Color &color)
-    : text(text), position(position), font(font), font_size(font_size),
-      spacing(spacing), color(color) {}
-
 void TextComponent::Update() {
   int screen_width = GetScreenWidth();
   int screen_height = GetScreenHeight();
