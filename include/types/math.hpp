@@ -1,3 +1,5 @@
+#pragma once
+
 struct UDim {
   float scale;
   float offset;
