@@ -38,12 +38,12 @@ add_executable(${PROJECT_NAME} ${ALL_SOURCES})
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/include)
 
 # ==================================================
-# vcpkg Packages
+# Link Libraries
 # ==================================================
 find_package(raylib CONFIG REQUIRED)
 find_package(glfw3 CONFIG REQUIRED)
-target_link_libraries(${PROJECT_NAME} PRIVATE 
-    raylib 
+target_link_libraries(${PROJECT_NAME} PRIVATE
+    raylib
     glfw
     Steamworks::API
     Steamworks::EncryptedAppTicket
@@ -52,12 +52,12 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
 # ==================================================
 # Output / Tools
 # ==================================================
-if (CMAKE_EXPORT_COMPILE_COMMANDS)
+if(CMAKE_EXPORT_COMPILE_COMMANDS)
     add_custom_target(
         copy_compile_commands ALL
         COMMAND ${CMAKE_COMMAND} -E create_symlink
-                "${CMAKE_BINARY_DIR}/compile_commands.json"
-                "${CMAKE_SOURCE_DIR}/compile_commands.json"
+        "${CMAKE_BINARY_DIR}/compile_commands.json"
+        "${CMAKE_SOURCE_DIR}/compile_commands.json"
         DEPENDS "${CMAKE_BINARY_DIR}/compile_commands.json"
         COMMENT "Creating symlink for compile_commands.json in source dir"
     )
