@@ -5,7 +5,7 @@
 #include <string>
 
 class TextComponent {
-private:
+protected:
   std::string text;
   UDim2 position;
   Font font;
@@ -26,5 +26,5 @@ public:
 
   void Update();
 
-  void Draw();
+  void Draw() const;
 };

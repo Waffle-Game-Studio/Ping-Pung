@@ -18,7 +18,7 @@ void TextComponent::Update() {
   };
 }
 
-void TextComponent::Draw() {
+void TextComponent::Draw() const {
   DrawTextEx(font, text.c_str(), absolute_position, absolute_font_size, spacing,
              color);
 }
