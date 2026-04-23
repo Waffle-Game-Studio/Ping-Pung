@@ -6,8 +6,8 @@ struct UDim {
 };
 
 struct UDim2 {
-  float relative_x;
-  float relative_y;
-  float absolute_x;
-  float absolute_y;
+  float scale_x;
+  float scale_y;
+  float offset_x;
+  float offset_y;
 };
