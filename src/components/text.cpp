@@ -2,6 +2,9 @@
 #include <raylib.h>
 
 void TextComponent::Update() {
+  if (!enabled)
+    return;
+
   this->size = {
       0, size.scale_y,
       MeasureTextEx(font, text.c_str(), GetAbsoluteSize().y, spacing).x,
@@ -12,6 +15,9 @@ void TextComponent::Update() {
 }
 
 void TextComponent::Draw() const {
+  if (!visible)
+    return;
+
   Rectangle rect = GetAbsoluteBounds();
 
   if (background_color.a > 0) {
