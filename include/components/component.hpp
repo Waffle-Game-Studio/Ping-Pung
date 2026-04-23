@@ -9,8 +9,8 @@ public:
   bool visible = true;
 
   Vector2 pivot = {0.0f, 0.0f};
-  UDim2 position;
-  UDim2 size;
+  UDim2 position = {0.0f, 0.0f, 0.0f, 0.0f};
+  UDim2 size = {0.0f, 0.0f, 0.0f, 0.0f};
 
   Component() = default;
   virtual ~Component() = default;
