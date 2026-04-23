@@ -12,6 +12,9 @@ public:
   float spacing = 0.0f;
   Color text_color = WHITE;
   Color background_color = {0, 0, 0, 0};
+  UDim2 background_padding = {0.0f, 0.0f, 0.0f, 0.0f};
+  UDim border_size = {0.0f, 0.0f};
+  Color border_color = {0, 0, 0, 0};
 
   TextComponent(const std::string &text, const UDim2 &position,
                 const Font &font, const UDim &font_size, float spacing,

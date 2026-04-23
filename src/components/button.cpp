@@ -11,6 +11,18 @@ FireHandlers(const std::vector<ButtonComponent::EventHandler> &handlers,
 }
 
 void ButtonComponent::Update() {
+  float screen_w = static_cast<float>(GetScreenWidth());
+  float screen_h = static_cast<float>(GetScreenHeight());
+
+  float font_h = screen_h * font_size.scale + font_size.offset;
+  float pad_w = screen_w * padding.scale_x + padding.offset_x;
+  float pad_h = screen_h * padding.scale_y + padding.offset_y;
+
+  Vector2 text_size = MeasureTextEx(font, text.c_str(), font_h, spacing);
+
+  this->size = {0.0f, 0.0f, text_size.x + 2.0f * pad_w,
+                font_h + 2.0f * pad_h};
+
   this->absolute_position = GetAbsolutePosition();
   this->absolute_size = GetAbsoluteSize();
 
@@ -59,7 +71,8 @@ void ButtonComponent::Draw() const {
     DrawRectangleRec(rect, background_color);
   }
 
-  float fsize = absolute_size.y;
+  float screen_h = static_cast<float>(GetScreenHeight());
+  float fsize = screen_h * font_size.scale + font_size.offset;
   Vector2 text_size = MeasureTextEx(font, text.c_str(), fsize, spacing);
   Vector2 text_pos = {rect.x + (rect.width - text_size.x) * 0.5f,
                       rect.y + (rect.height - text_size.y) * 0.5f};
