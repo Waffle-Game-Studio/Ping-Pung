@@ -6,14 +6,13 @@
 #include <string>
 
 class TextComponent : public Component {
-protected:
+public:
   std::string text = "";
   Font font = GetFontDefault();
   float spacing = 0.0f;
   Color text_color = WHITE;
   Color background_color = {0, 0, 0, 0};
 
-public:
   TextComponent(const std::string &text, const UDim2 &position,
                 const Font &font, const UDim &font_size, float spacing,
                 const Color &text_color, const Color &background_color)
