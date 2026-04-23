@@ -21,4 +21,8 @@ public:
   Vector2 GetAbsolutePosition() const;
   Vector2 GetAbsoluteSize() const;
   Rectangle GetAbsoluteBounds() const;
+
+protected:
+  Vector2 absolute_position = {0.0f, 0.0f};
+  Vector2 absolute_size = {0.0f, 0.0f};
 };
