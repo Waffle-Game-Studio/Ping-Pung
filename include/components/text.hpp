@@ -7,11 +7,11 @@
 
 class TextComponent : public Component {
 protected:
-  std::string text;
-  Font font;
-  float spacing;
-  Color text_color;
-  Color background_color;
+  std::string text = "";
+  Font font = GetFontDefault();
+  float spacing = 0.0f;
+  Color text_color = WHITE;
+  Color background_color = {0, 0, 0, 0};
 
 public:
   TextComponent(const std::string &text, const UDim2 &position,
