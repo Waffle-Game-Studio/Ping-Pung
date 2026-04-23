@@ -8,6 +8,7 @@ public:
   bool enabled = true;
   bool visible = true;
 
+  Vector2 pivot = {0.0f, 0.0f};
   UDim2 position;
   UDim2 size;
 
