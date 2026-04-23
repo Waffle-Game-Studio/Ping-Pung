@@ -8,7 +8,7 @@ public:
   bool enabled = true;
   bool visible = true;
 
-  Vector2 pivot = {0.0f, 0.0f};
+  Vector2 pivot = {0.5f, 0.5f};
   UDim2 position = {0.0f, 0.0f, 0.0f, 0.0f};
   UDim2 size = {0.0f, 0.0f, 0.0f, 0.0f};
 
