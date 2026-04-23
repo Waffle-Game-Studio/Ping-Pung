@@ -10,15 +10,23 @@ void TextButtonComponent::Update() {
       absolute_size.y,
   };
 
-  if (CheckCollisionPointRec(GetMousePosition(), bounds)) {
-    is_hovered = true;
-    if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
-      is_clicked = true;
-    } else {
-      is_clicked = false;
+  const bool is_hovered = CheckCollisionPointRec(GetMousePosition(), bounds);
+
+  if (is_hovered && !was_hovered) {
+    for (const Callback &cb : on_hover_enter) {
+      cb();
     }
-  } else {
-    is_hovered = false;
-    is_clicked = false;
+  } else if (!is_hovered && was_hovered) {
+    for (const Callback &cb : on_hover_exit) {
+      cb();
+    }
   }
+
+  if (is_hovered && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+    for (const Callback &cb : on_click) {
+      cb();
+    }
+  }
+
+  was_hovered = is_hovered;
 }
