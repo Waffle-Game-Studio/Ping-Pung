@@ -20,4 +20,5 @@ public:
 
   Vector2 GetAbsolutePosition() const;
   Vector2 GetAbsoluteSize() const;
+  Rectangle GetAbsoluteBounds() const;
 };

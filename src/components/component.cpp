@@ -19,3 +19,12 @@ Vector2 Component::GetAbsoluteSize() const {
   return Vector2{screen_width * size.relative_x + size.absolute_x,
                  screen_height * size.relative_y + size.absolute_y};
 }
+
+Rectangle Component::GetAbsoluteBounds() const {
+  Vector2 absolute_position = GetAbsolutePosition();
+  Vector2 absolute_size = GetAbsoluteSize();
+
+  return Rectangle{absolute_position.x - absolute_size.x * pivot.x,
+                   absolute_position.y - absolute_size.y * pivot.y,
+                   absolute_size.x, absolute_size.y};
+}
