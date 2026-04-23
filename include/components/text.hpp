@@ -1,30 +1,31 @@
 #pragma once
 
+#include "components/component.hpp"
 #include "types/math.hpp"
 #include <raylib.h>
 #include <string>
 
-class TextComponent {
+class TextComponent : public Component {
 protected:
   std::string text;
-  UDim2 position;
   Font font;
-  UDim font_size;
   float spacing;
-  Color color;
-
-  Vector2 absolute_position;
-  Vector2 absolute_size;
-  float absolute_font_size;
+  Color text_color;
+  Color background_color;
 
 public:
   TextComponent(const std::string &text, const UDim2 &position,
                 const Font &font, const UDim &font_size, float spacing,
-                const Color &color)
-      : text(text), position(position), font(font), font_size(font_size),
-        spacing(spacing), color(color) {}
+                const Color &text_color, const Color &background_color)
+      : text(text), font(font), spacing(spacing), text_color(text_color),
+        background_color(background_color) {
+    this->position = position;
+    this->size = {
+        0, font_size.scale,
+        MeasureTextEx(font, text.c_str(), font_size.offset, spacing).x,
+        font_size.offset};
+  }
 
-  void Update();
-
-  void Draw() const;
+  void Update() override;
+  void Draw() const override;
 };

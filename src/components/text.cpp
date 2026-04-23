@@ -2,23 +2,22 @@
 #include <raylib.h>
 
 void TextComponent::Update() {
-  int screen_width = GetScreenWidth();
-  int screen_height = GetScreenHeight();
+  this->size = {
+      0, size.scale_y,
+      MeasureTextEx(font, text.c_str(), GetAbsoluteSize().y, spacing).x,
+      size.offset_y};
 
-  absolute_font_size = screen_height * font_size.scale + font_size.offset;
-
-  absolute_size =
-      MeasureTextEx(font, text.c_str(), absolute_font_size, spacing);
-
-  absolute_position = Vector2{
-      screen_width * position.relative_x + position.absolute_x -
-          absolute_size.x / 2.0f,
-      screen_height * position.relative_y + position.absolute_y -
-          absolute_size.y / 2.0f,
-  };
+  this->absolute_position = GetAbsolutePosition();
+  this->absolute_size = GetAbsoluteSize();
 }
 
 void TextComponent::Draw() const {
-  DrawTextEx(font, text.c_str(), absolute_position, absolute_font_size, spacing,
-             color);
+  Rectangle rect = GetAbsoluteBounds();
+
+  if (background_color.a > 0) {
+    DrawRectangle(rect.x, rect.y, rect.width, rect.height, background_color);
+  }
+
+  DrawTextEx(font, text.c_str(), Vector2{rect.x, rect.y}, absolute_size.y,
+             spacing, text_color);
 }
