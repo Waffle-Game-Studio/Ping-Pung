@@ -16,13 +16,13 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # ==================================================
 include(FetchContent)
 
-FetchContent_Declare(
+fetchcontent_declare(
     SteamworksSDK
     GIT_REPOSITORY https://github.com/Waffle0823/SteamworksSDK.git
     GIT_TAG main
 )
 
-FetchContent_MakeAvailable(SteamworksSDK)
+fetchcontent_makeavailable(SteamworksSDK)
 
 # ==================================================
 # Source & Header Collection
