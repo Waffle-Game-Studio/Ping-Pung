@@ -1,5 +1,12 @@
 {
     "dependencies": [
         "raylib"
+    ],
+    "builtin-baseline": "7147ac1294ef9647e8679e1183ac440a5d0a63b7",
+    "overrides": [
+        {
+            "name": "raylib",
+            "version": "5.5"
+        }
     ]
 }
